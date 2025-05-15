@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="Todo.fs" />
-    <Compile Include="TodoStore.fs" />
     <Compile Include="HttpHelpers.fs" />
     <Compile Include="Validation.fs" />
     <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
 </Project>

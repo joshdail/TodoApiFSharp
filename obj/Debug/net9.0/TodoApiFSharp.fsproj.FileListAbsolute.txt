@@ -1,8 +1,3 @@
-/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.fsproj.AssemblyReference.cache
-/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.AssemblyInfoInputs.cache
-/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.AssemblyInfo.fs
-/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.fsproj.CoreCompileInputs.cache
-/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.MvcApplicationPartsAssemblyInfo.cache
 /Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/appsettings.Development.json
 /Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/appsettings.json
 /Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/Properties/launchSettings.json
@@ -26,6 +21,12 @@
 /Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/tr/FSharp.Core.resources.dll
 /Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/zh-Hans/FSharp.Core.resources.dll
 /Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/zh-Hant/FSharp.Core.resources.dll
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.fsproj.AssemblyReference.cache
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.AssemblyInfoInputs.cache
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.AssemblyInfo.fs
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.fsproj.CoreCompileInputs.cache
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.MvcApplicationPartsAssemblyInfo.cache
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.sourcelink.json
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/scopedcss/bundle/TodoApiFSharp.styles.css
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/staticwebassets.build.json
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/staticwebassets.development.json
@@ -42,4 +43,4 @@
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.pdb
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.genruntimeconfig.cache
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/ref/TodoApiFSharp.dll
-/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.sourcelink.json
+/Users/josh/Local/Projects/TodoApiFSharp/bin/Debug/net9.0/todos.json

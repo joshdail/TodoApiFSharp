@@ -1,50 +1,98 @@
 open System
+open System.IO
+open System.Text.Json
+open System.Text.Json.Serialization
+open System.Collections.Generic
+open System.Threading.Tasks
+open Microsoft.AspNetCore.Http
 open Microsoft.AspNetCore.Builder
 open Microsoft.Extensions.Hosting
-open Microsoft.AspNetCore.Http
-open Microsoft.AspNetCore.Http.HttpResults
-open Microsoft.AspNetCore.Routing
 open Microsoft.Extensions.DependencyInjection
-open TodoApi
-open TodoApi.TodoStore
-open TodoApi.Validation
-open TodoApi.HttpHelpers
+open System.Linq
+
+// Define the model
+type Todo = {
+    Id: int
+    Title: string
+    IsDone: bool
+}
+
+let storageFile = "todos.json"
+
+let loadTodos () =
+    if File.Exists(storageFile) then
+        let json = File.ReadAllText(storageFile)
+        JsonSerializer.Deserialize<List<Todo>>(json)
+    else
+        List<Todo>()
+
+let saveTodos (todos: List<Todo>) =
+    let json = JsonSerializer.Serialize(todos, JsonSerializerOptions(WriteIndented = true))
+    File.WriteAllText(storageFile, json)
 
 let builder = WebApplication.CreateBuilder()
 let app = builder.Build()
 
-app.MapGet("/todos", Func<IResult>(fun () ->
-    Results.Ok(getAll())
+// GET /todos
+app.MapGet("/todos", Func<Task<IResult>>(fun () ->
+    task {
+        let todos = loadTodos ()
+        return Results.Ok(todos)
+    }
 )) |> ignore
 
-app.MapGet("/todos/{id:int}", Func<int, IResult>(fun id ->
-    match getById id with
-    | Some todo -> Results.Ok(todo)
-    | None -> Results.NotFound()
+// GET /todos/{id}
+app.MapGet("/todos/{id:int}", Func<int, Task<IResult>>(fun id ->
+    task {
+        let todos = loadTodos ()
+        let todo = todos |> Seq.tryFind (fun t -> t.Id = id)
+        match todo with
+        | Some t -> return Results.Ok(t)
+        | None -> return Results.NotFound()
+    }
 )) |> ignore
 
-app.MapPost("/todos", Func<{| Title: string |}, IResult>(fun input ->
-    match validateTitle input.Title with
-    | Some error -> jsonError error
-    | None ->
-        let newTodo = add input.Title
-        Results.Created($"/todos/{newTodo.Id}", newTodo)
+// POST /todos
+app.MapPost("/todos", Func<HttpContext, Task<IResult>>(fun ctx ->
+    task {
+        let! newTodo = ctx.Request.ReadFromJsonAsync<Todo>()
+        let todos = loadTodos ()
+        let nextId =
+            if todos.Count = 0 then 1
+            else (todos |> Seq.maxBy (fun t -> t.Id)).Id + 1
+        let todo = { newTodo with Id = nextId }
+        todos.Add(todo)
+        saveTodos todos
+        return Results.Created($"/todos/{todo.Id}", todo)
+    }
 )) |> ignore
 
-app.MapPut("/todos/{id:int}", Func<int, Todo, IResult>(fun id updated ->
-    match validateTitle updated.Title with
-    | Some error -> jsonError error
-    | None ->
-        match update id updated with
-        | Some todo -> Results.Ok(todo)
-        | None -> Results.NotFound()
+// PUT /todos/{id}
+app.MapPut("/todos/{id:int}", Func<int, HttpContext, Task<IResult>>(fun id ctx ->
+    task {
+        let! updated = ctx.Request.ReadFromJsonAsync<Todo>()
+        let todos = loadTodos ()
+        let index = todos.FindIndex(fun t -> t.Id = id)
+        if index = -1 then
+            return Results.NotFound()
+        else
+            todos.[index] <- { updated with Id = id }
+            saveTodos todos
+            return Results.Ok(todos.[index])
+    }
 )) |> ignore
 
-app.MapDelete("/todos/{id:int}", Func<int, IResult>(fun id ->
-    if delete id then
-        Results.Ok()
-    else
-        Results.NotFound()
+// DELETE /todos/{id}
+app.MapDelete("/todos/{id:int}", Func<int, Task<IResult>>(fun id ->
+    task {
+        let todos = loadTodos ()
+        let removed = todos.RemoveAll(fun t -> t.Id = id)
+        if removed = 0 then
+            return Results.NotFound()
+        else
+            saveTodos todos
+            return Results.NoContent()
+    }
 )) |> ignore
 
 app.Run()
