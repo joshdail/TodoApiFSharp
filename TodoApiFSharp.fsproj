@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Todo.fs" />
+    <Compile Include="TodoStore.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+</Project>
