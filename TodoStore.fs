@@ -1,5 +1,5 @@
 namespace TodoApi
-
+open System
 open System.Collections.Generic
 
 module TodoStore =
@@ -33,3 +33,10 @@ module TodoStore =
     let delete id =
         todos.Remove(id)
     
+    let validateTitle (title: string) : string option =
+        if System.String.IsNullOrWhiteSpace(title) then
+            Some "Title must not be empty."
+        elif title.Length > 256 then
+            Some "Title must be 256 characters or fewer."
+        else
+            None

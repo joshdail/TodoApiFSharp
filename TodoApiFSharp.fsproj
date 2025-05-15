@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Include="Todo.fs" />
     <Compile Include="TodoStore.fs" />
+    <Compile Include="HttpHelpers.fs" />
+    <Compile Include="Validation.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 

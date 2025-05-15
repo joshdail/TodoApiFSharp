@@ -42,3 +42,4 @@
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.pdb
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.genruntimeconfig.cache
 /Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/ref/TodoApiFSharp.dll
+/Users/josh/Local/Projects/TodoApiFSharp/obj/Debug/net9.0/TodoApiFSharp.sourcelink.json

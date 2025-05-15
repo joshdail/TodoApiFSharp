@@ -10,7 +10,7 @@ open System.Reflection
 [<assembly: System.Reflection.AssemblyCompanyAttribute("TodoApiFSharp")>]
 [<assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")>]
 [<assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")>]
-[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")>]
+[<assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5ab7c5e3c732ae304afa46fcb4886f821658adc")>]
 [<assembly: System.Reflection.AssemblyProductAttribute("TodoApiFSharp")>]
 [<assembly: System.Reflection.AssemblyTitleAttribute("TodoApiFSharp")>]
 [<assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")>]
